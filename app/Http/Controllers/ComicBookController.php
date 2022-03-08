@@ -26,7 +26,7 @@ class ComicBookController extends Controller
      */
     public function create()
     {
-        //
+        return view("comic_books.create");
     }
 
     /**
@@ -48,8 +48,6 @@ class ComicBookController extends Controller
      */
     public function show(ComicBook $comicBook)
     {
-        // $comicBook=ComicBook::findOrFail($id);
-
         return view('comic_books.show', compact("comicBook"));
     }
 

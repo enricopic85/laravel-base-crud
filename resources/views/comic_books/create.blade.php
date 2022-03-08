@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <a  class="btn btn-primary" href="{{route('comic_books.create')}}" >Aggiungi</a>
+    <form action="" method="post"></form>
 </body>
 </html>
