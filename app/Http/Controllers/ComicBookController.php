@@ -84,7 +84,7 @@ class ComicBookController extends Controller
     public function update(Request $request, $id)
     {
         $data=$request->all();
-        $comicBook=ComicBook::findOrFail();
+        $comicBook=ComicBook::findOrFail($id);
         //esegue sia il fill() che il save()
         $comicBook->update($data);
 
