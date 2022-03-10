@@ -1,6 +1,12 @@
 @extends('partials.home')
 
 @section('content')
+@dump($errors->all())
+@foreach ($errors->all as $error)
+   <ul>
+     <li>{{$error}}</li>
+   </ul>
+@endforeach
 <form action="{{route('comic_books.store')}}" method="post">
   @csrf
   <div class="mb-3">

@@ -10,13 +10,12 @@
                     <div class="card-body ">
                     <h5 class="card-title">{{$dato->title}}</h5>
                     <p class="card-text">{{$dato->description}}</p>
-                    <a href="{{route('comic_books.edit',$comicBook->id)}}">Modifica</a>
-                    <form action="{{route('comic_books.destroy',$comicBook->id)}} " method="POST">
+                    <a href="{{route('comic_books.edit',$dato->id)}}">Modifica</a>
+                    <form action="{{route('comic_books.destroy',$dato->id)}} " method="POST">
                         @csrf
                         @method("delete")
                         <button type="submit">Elimina</button>
                     </form>
-                     {{-- <a  class="btn btn-primary" href="{{route('comic_books.edit', $comicBook->id ) }}" >Modifica</a>  --}}
                     </div>
                 </div>
             </div>
