@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ComicBook;
+use App\Http\Requests\ComicBookStoreRequest;
 use Illuminate\Http\Request;
 
 class ComicBookController extends Controller
@@ -35,17 +36,18 @@ class ComicBookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicBookStoreRequest $request)
     {
         $data=$request->validate([
-            'title'=>"required|min:5|",
-            'description'=>"required|min:20",
-            'thumb'=>"required|url",
-            'price'=>"required|numeric",
-            'series'=>"required|min:5",
-            'sale_date'=>"required|date",
-            'type'=>"required|min:5"
+            // 'title'=>"required|min:5",
+            // 'description'=>"required|min:20",
+            // 'thumb'=>"required|url",
+            // 'price'=>"required|numeric",
+            // 'series'=>"required|min:5",
+            // 'sale_date'=>"required|date",
+            // 'type'=>"required|min:5"
         ]);
+        $data=$request->validated();
         //metodo usando il fill
         // $newComicBook=new ComicBook();
         // $newComicBook->fill($data);
