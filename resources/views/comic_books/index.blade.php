@@ -1,13 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('css/app') }}">
-</head>
-<body>
-    <a  class="btn btn-primary" href="{{route('comic_books.create')}}" >Aggiungi</a>
-</body>
-</html>
+@extends('partials.home')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            @foreach ($dati as $dato)
+            <div class="col-3">
+                <div class="card " style="width: 18rem;">
+                    <img class="card-img-top" src={{$dato->thumb}} alt="Card image cap">
+                    <div class="card-body ">
+                    <h5 class="card-title">{{$dato->title}}</h5>
+                    <p class="card-text">{{$dato->description}}</p>
+                    <a href="{{route('comic_books.edit',$comicBook->id)}}">Modifica</a>
+                    <form action="{{route('comic_books.destroy',$comicBook->id)}} " method="POST">
+                        @csrf
+                        @method("delete")
+                        <button type="submit">Elimina</button>
+                    </form>
+                     {{-- <a  class="btn btn-primary" href="{{route('comic_books.edit', $comicBook->id ) }}" >Modifica</a>  --}}
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+       
+    </div>  
+    
+@endsection

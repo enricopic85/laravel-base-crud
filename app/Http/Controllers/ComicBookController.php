@@ -38,15 +38,13 @@ class ComicBookController extends Controller
     public function store(Request $request)
     {
         $data=$request->all();
-        $newComicBook=new ComicBook();
-        $newComicBook->title=$data["title"];
-        $newComicBook->description=$data["description"];
-        $newComicBook->thumb=$data["thumb"];
-        $newComicBook->price=$data["price"];
-        $newComicBook->series=$data["series"];
-        $newComicBook->sale_date=$data["sale_date"];
-        $newComicBook->type=$data["type"];
-        $newComicBook->save();
+        //metodo usando il fill
+        // $newComicBook=new ComicBook();
+        // $newComicBook->fill($data);
+        // $newComicBook->save();
+        
+        //metodo con create:
+        $newComicBook=ComicBook::create($data);
         return redirect()->route("comic_books.show",$newComicBook->id);
     }
 
@@ -67,11 +65,9 @@ class ComicBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ComicBook $comicBook)
     {
-        $comicBook=ComicBook::findOrFail($id);
-
-        return view('comic_books.edit',compact("comicBook"));
+        return view('comic_books.edit',compact('comicBook'));
     }
 
     /**
